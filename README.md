@@ -6,12 +6,12 @@ V1.1 by Rocket Buddha andres.julian.lusi@gmail.com. 19 de septiembre de 2017 16:
 
 
 ## Sobre el modulo en general
-AnalitycsFF ofrece a tu juego funcionalidades de integración con FireBase para Analitycs. Para más información puedes revisar la [Wiki](https://bitbucket.org/55_studios/analitycsff/wiki/Home).
+FFStudios ofrece a tu juego hecho en Godot engine 2.X funcionalidades de integración con Android, FireBase, Google Analitycs, Facebook SDK, Google Play Juegos entre otros. Para más información puedes revisar la [Wiki](https://bitbucket.org/55_studios/analitycsff/wiki/Home).
 
 ## Como integrar este módulo con Godot Engine
 Antes de empezar quizás quieras revisar la [documentación oficial](http://docs.godotengine.org/en/stable/development/compiling/compiling_for_android.html#building-the-export-templates).
 
-###Asegúrate de contar con todo lo necesario para trabajar con fuentes de Godot para compilar a Android
+### Asegúrate de contar con todo lo necesario para trabajar con fuentes de Godot para compilar a Android
 Asegúrate de tener todo lo que necesitas para compilar para x11(Linux):
 
 En Fedora:
@@ -54,7 +54,7 @@ Ejecutar cambiando tu nombre de usuario:
 git clone https://Edu_55@bitbucket.org/55_studios/ffandroid.git
 ```
 
-####Modificando el archivo config.py
+#### Modificando el archivo config.py
 El archivo config.py es el archivo que utiliza Scons para saber como armar el *build.gradle* el cual luego utilizaremos para buildear el .apk.
 
 En este caso deberemos modificar la línea:
