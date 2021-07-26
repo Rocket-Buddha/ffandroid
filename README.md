@@ -1,17 +1,14 @@
-#Readme
+# Readme
 
 V1.0 by Rocket Buddha andres.julian.lusi@gmail.com. 19 de septiembre de 2017 10:01
 
 V1.1 by Rocket Buddha andres.julian.lusi@gmail.com. 19 de septiembre de 2017 16:44
 
-##Índice
 
-[TOC]
-
-##Sobre el modulo en general
+## Sobre el modulo en general
 AnalitycsFF ofrece a tu juego funcionalidades de integración con FireBase para Analitycs. Para más información puedes revisar la [Wiki](https://bitbucket.org/55_studios/analitycsff/wiki/Home).
 
-##Como integrar este módulo con Godot Engine
+## Como integrar este módulo con Godot Engine
 Antes de empezar quizás quieras revisar la [documentación oficial](http://docs.godotengine.org/en/stable/development/compiling/compiling_for_android.html#building-the-export-templates).
 
 ###Asegúrate de contar con todo lo necesario para trabajar con fuentes de Godot para compilar a Android
@@ -38,14 +35,14 @@ Para ser agregadas permanentemente agregar las líneas al *.bash_profile.sh*(Lin
 
 Scons utilizara estos paths para poder compilar el engine en librerías dinámicas .so (shared objects, simil dinamic link library de Win, pero en Unix) utilizables mediante NDK de Android.
 
-###Baja la versión correcta de Godot
+### Baja la versión correcta de Godot
 Recuerda que los templates de exportación deben ser compatibles con la versión del editor, entonces si estas utilizando la última versión del editor 2.1 por ejemplo, entonces deberás bajar el ultimo código de la 2.1, entonces te va a convenir bajar solo esa rama para no tener problemas de compatibilidad entre versiones.
 
 ```bash
 git clone https://github.com/godotengine/godot.git --branch 2.1
 ```
 
-###Bajar los modulos
+### Bajar los modulos
 
 Parado en:
 
@@ -66,13 +63,13 @@ En este caso deberemos modificar la línea:
 env.android_add_default_config("applicationId '[your.app.package.id]'")
 ```
 
-####Modificando el archivo AndroidManifestChunk.xml
+#### Modificando el archivo AndroidManifestChunk.xml
 El archivo AndroidManifestChunk.xml es el archivo que utiliza Scons para construir el *AndroidManifest.xml* 
 ```xml
 <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="\u003<app_id>" />
 ```
 
-###Compilando libgodot_android.so debug y release
+### Compilando libgodot_android.so debug y release
 
 Ahora vamos a compilar las librería .so que la .apk utilizara implementando la Native Developer Kit, NDK. Básicamente lo que estamos haciendo en este paso es compilar todo el engine en una librería dinámica que invocara la .apk.
 
@@ -108,19 +105,19 @@ Y el archivo:
 
 Deberás familiarizarte un poco con [Gradle](https://gradle.org/), un build tool que cada vez está cobrando más fuerza.
 
-####Trubleshooting
+#### Trubleshooting
 
 * No poner -j con mas cantidad de procesadores de los que realmente se tiene por que dara un error de compilación.
 * En algunos casos si alguno de los archivos que intentara sobre-escribir Scons esta tomado de alguna. Es recomendable limpiar antes de volver a compilar.
 
-###El archivo google-services.json
+### El archivo google-services.json
 Debes tener en cuenta que para setear la configuración de FireBase, Android utiliza el archivo google-services.json. Antes de continuar debes colocar tu archivo google-services.json en:
 
 *godot/platform/android/java/*
 
 Este archivo será empaquetado por Gradle en los .apk finales.
 
-###Compilando custom templates .apk
+### Compilando custom templates .apk
 
 Parado en:
 
@@ -134,7 +131,7 @@ Ejecutar:
 
 Podría ejecutarse gradle build de estar instalado pero usando el gradle wrapper nos aseguramos de buildear la apk con la versión que utilizo el desarrollador, de esta forma podemos evitar problemas de compatibilidad. Gradlew descargara la versión correcta y la utilizara para buildear la apk.
 
-####Trubleshooting
+#### Trubleshooting
 * Gradle a veces no piso los archivos, es recomendable borrar el contenido de las carpetas:
 
 	*godot/bin*
@@ -143,7 +140,7 @@ Podría ejecutarse gradle build de estar instalado pero usando el gradle wrapper
 
 	*godot/plataform/android/java/libs*
 
-###Usando los custom templates
+### Usando los custom templates
 El resultado serán los archivos *android_debug.apk* y *android_release.apk*, ubicados en:
 
 *godot/bin*
@@ -154,10 +151,10 @@ Colocar estos como custom templates en el editor en:
 
 En la sección de "Custom Package".
 
-###Permisos
+### Permisos
 Existen dos formas de configurar los permisos para poder utilizar el modulo.
 
-####Permisos desde Godot
+#### Permisos desde Godot
 La primera, la más fácil, desde el editor de Godot ingresar:
 
 *Exportar > Android*
@@ -169,7 +166,7 @@ En la sección "Permissions": tildar las opciones:
 
 Godot incorporara los permisos al archivo *Androidmanifest.xml* cuando exporte el proyecto.
 
-####Permisos desde el modulo
+#### Permisos desde el modulo
 Previo al iniciar la compilación agregar al archivo config.py la línea:
 
 ```bash
@@ -184,11 +181,11 @@ Y agregar en la carpeta *android/* el archivo *AndroidPermissionsChunk.xml*, con
 ```
 De esta manera los nuevos permisos ya serán agregados al *Androidmanifest.xml* del template que se generara.
 
-##Desarrollo en Android Studio
+## Desarrollo en Android Studio
 
 Se podrá desarrollar desde el IDE, importando el proyecto una vez generado el archivo *build.gradle* seleccionando este para la importación.
 Con `CTRL` + `F9` podras comprobar si el producto podra ser constuido.
 Seleccionando las opciones de Gradle, podras elegir buil para buildear las .apk, por defecto Android Studio utilizara el wrapper de Gradle.
 
-###Debug
+### Debug
 Para debuguear Analitycs deberas [setear el telefono en modo debug y tambien deberas configurar tu consola de FireBase](https://firebase.google.com/docs/analytics/debugview?hl=es-419).
