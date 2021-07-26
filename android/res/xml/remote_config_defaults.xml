@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- START xml_defaults -->
+<defaultsMap>
+    <entry>
+        <key>interstitials_ads_cold_down</key>
+        <value>240</value>
+    </entry>
+     <entry>
+        <key>reward_restart_inter_cold_down</key>
+        <value>true</value>
+    </entry>
+</defaultsMap>
